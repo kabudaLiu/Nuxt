@@ -9,14 +9,22 @@
                 </p>
             </div>
             <div class="px-6 py-4">
-                <span class="badge mr-2">#photography</span>
-                <span class="badge mr-2">#travel</span>
-                <span class="badge">#winter</span>
+                <div>
+                    <span class="badge mr-2">#photography</span>
+                    <span class="badge mr-2">#travel</span>
+                    <span class="badge">#winter</span>
+                </div>
+                <div class="flex justify-between">
+                    <NuxtLink class="badge" v-for="(x, index) in data" :key="index" :to="`/second/${index}`">{{ x }}</NuxtLink>
+                </div>
             </div>
         </div>
     </div>
 </template>
-
+<script setup lang="ts">
+const { data } = await useFetch("/api/getList");
+console.log(data);
+</script>
 <style lang="postcss" scoped>
 .badge {
     @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700;
